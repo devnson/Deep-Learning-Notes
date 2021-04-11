@@ -34,6 +34,21 @@ Finally, batch normalization layers can also resolve the issue. As stated before
 
 In machine learning, the exploding gradient problem is an issue found in training artificial neural networks with gradient-based learning methods and backpropagation. An artificial neural network is a learning algorithm, also called neural network or neural net, that uses a network of functions to understand and translate data input into a specific output. This type of learning algorithm is designed to mimic the way neurons function in the human brain. Exploding gradients are a problem when large error gradients accumulate and result in very large updates to neural network model weights during training. Gradients are used during training to update the network weights, but when the typically this process works best when these updates are small and controlled. When the magnitudes of the gradients accumulate,  an unstable network is likely to occur, which can cause poor predicition results or even a model that reports nothing useful what so ever. There are methods to fix exploding gradients, which include gradient clipping and weight regularization, among others.
 
+Think about calculating the gradient with respect to the same weight, but instead of really small terms, what if they were large? And by large, we mean greater than one.
+
+Well, if we multiply a bunch of terms together that are all greater than one, we're going to get something greater than one, and perhaps even a lot greater than one.
+
+As a result, we can see that the more of these larger valued terms we have being multiplied together, the larger the gradient is going to be, thus essentially exploding in size.
+
+With this gradient, we go through the same process to proportionally update our weight with it.
+
+However, this time, instead of barely moving our weight with this update, we're going to greatly move it, So much so, that the optimal value for this weight won't be achieved because the proportion to which the weight becomes updated with each epoch is just too large and continues to move further and further away from its optimal value.
+
 ## Why is this Useful?
 
 Exploding gradients can cause problems in the training of artificial neural networks. When there are exploding gradients, an unstable network can result and the learning cannot be completed. The values of the weights can also become so large as to overflow and result in something called NaN values. NaN values, which stands for not a number, are values that represent an undefined or unrepresentable values. It is useful to know how to identify exploding gradients in order to correct the training. 
+
+
+
+
+https://www.youtube.com/watch?v=IJ9atfxFjOQ&list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRUi&index=9&ab_channel=KrishNaik
