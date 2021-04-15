@@ -44,9 +44,13 @@ The above equation computes the gradient of the cost function <b> J(θ) </b> w.r
 
 ![3eee0b_ed42ef8479934026980c15c679df0821_mv2](https://user-images.githubusercontent.com/23405520/114671251-82ddfd00-9d21-11eb-8bdf-c3da800166a1.jpg)
 
+![Cost-Function](https://user-images.githubusercontent.com/23405520/114832619-4deaac80-9dec-11eb-85ac-8b45df06020a.jpg)
+
+
 Our aim is to get to the bottom of our graph (Cost vs weights), or to a point where we can no longer move downhill-a local minimum.
 
 Okay now, what is Gradient?
+
 
 "A gradient measures how much the output of a function changes if you change the inputs a little  bit".
 ![3eee0b_155ce2aa05d5419698f844ab29062d70_mv2](https://user-images.githubusercontent.com/23405520/114671423-b882e600-9d21-11eb-931b-0425aed4eba1.gif)
