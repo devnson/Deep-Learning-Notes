@@ -55,6 +55,24 @@ Okay now, what is Gradient?
 "A gradient measures how much the output of a function changes if you change the inputs a little  bit".
 ![3eee0b_155ce2aa05d5419698f844ab29062d70_mv2](https://user-images.githubusercontent.com/23405520/114671423-b882e600-9d21-11eb-931b-0425aed4eba1.gif)
 
+#### How weights get updated?
+Using the Gradient Descent optimization algorithm, the weights are updated incrementally after each epoch (= pass over the training dataset).
+
+![image](https://user-images.githubusercontent.com/23405520/114834739-7f647780-9dee-11eb-872f-3a8cc1dec159.png)
+
+The magnitude and direction of the weight update is computed by taking a step in the opposite direction of the cost gradient
+
+![image](https://user-images.githubusercontent.com/23405520/114834808-8f7c5700-9dee-11eb-96eb-483234eed5ca.png)
+
+where η is the learning rate. The weights are then updated after each epoch via the following update rule:
+
+![image](https://user-images.githubusercontent.com/23405520/114834870-9c994600-9dee-11eb-9872-65656b28c717.png)
+
+where Δw is a vector that contains the weight updates of each weight coefficient w, which are computed as follows:
+
+![image](https://user-images.githubusercontent.com/23405520/114834961-b5a1f700-9dee-11eb-90be-758290baf9e2.png)
+
+
 #### Importance of Learning Rate
 
 How big the steps are gradient descent takes into the direction of the local minimum are determined by the learning rate, which figures out how fast or slows we will move towards the optimal weights.
