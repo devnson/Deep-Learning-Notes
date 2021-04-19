@@ -53,6 +53,15 @@ We perform numerous convolutions on our input, where each operation uses a diffe
 
 Just like any other Neural Network, we use an <b> activation function </b> to make our output non-linear. In the case of a Convolutional Neural Network, the output of the convolution will be passed through the activation function. This could be the <b> ReLU </b> activation function.
 
+![1_ciDgQEjViWLnCbmX-EeSrA](https://user-images.githubusercontent.com/23405520/115177543-13835700-a0ed-11eb-9ee9-d0aa1186bac9.gif)
+
+In the case of images with multiple channels (eg RGB), the kernel has the same depth as that of the input image. Matrix Multiplication is performed between Kn (Kernel) and In(Image) stack ([K1, I1]:[K2, I2]; [K3,I3]) and all the results are summed with the bias to give us a squashed one-depth channel Convoluted Feature Output.
+
+![1_1VJDP6qDY9-ExTuQVEOlVg](https://user-images.githubusercontent.com/23405520/115177689-5e04d380-a0ed-11eb-93a0-509282371853.gif)
+
+The objective of the Convolution Operation is to <b> extract the high-level features </b> such as edges, from the input image. ConvNets need not be limited to only one Convolutional Layer. Conventionally, the first ConvLayer is responsible for capturing the Low-Level features such as edges, color, gradient orientation, etc. With added layers, the architecture adapts to the High-Level features as well, giving us a network which has the wholesome understanding of images in the dataset, similar to how we would.
+
+
 #### Stride
 
 Stride is the size of the step the convolution filter moves each time. A stride size is usually 1, meaning the filter slides pixel by pixel. By increasing the stride size, your filter is sliding over the input with a larger interval and thus has less overlap between the cells.
@@ -68,9 +77,21 @@ A layers of zero-value pixels is added to surround the input with zeros, so that
 
 #### Pooling
 
+![1_uoWYsCV5vBU8SHFPAPao-w](https://user-images.githubusercontent.com/23405520/115178239-7e815d80-a0ee-11eb-9f9c-88c985281ee8.gif)
+
+Similar to the Convolutional Layer, the Pooling layer is responsible for reducing the spatial size of the Convolved Feature. This is to <b> decrease the computational power required to process the data </b> through dimensionality reduction. Furthermore, it is useful for <b> extracting dominant features </b> which are rotational and positional invariant, thus maintaining the process of effectively training of the model.
+
 After a convolution layer, it is common to add a pooling layer in between CNN layers. The function of pooling to continously reduce the dimensionality to reduce the number of parameters and computation in the network . This shortness the training time and controls overfitting.
 
 The most frequent type of pooling is <b> max pooling </b>, which takes the maximum value in each window. These window size need to be specified beforehand. This decrease the feature map size while at the same time keeping the significant information.
+
+- Max Pooling : it returns the <b> Maximum value </b> from the portion of the image covered by the Kernel. 
+- Average Pooling : it return the <b> average of all the values </b> from the portion of the image covered by the Kernel.
+
+Max pooling also performs as a <b> Noise Suppressant </b>. It discards the noisy activations altogether and also performs de-noising along with dimensionality reduction. On the other hand, Average Pooling simply performs dimensionality reduction as a noise suppressing mechanism. Hence, we can say that <b> Max pooling performs a lot better that Average Pooling </b>
+
+![1_KQIEqhxzICU7thjaQBfPBQ](https://user-images.githubusercontent.com/23405520/115178570-344cac00-a0ef-11eb-8d36-b529bccce25f.png)
+
 
 ![96HH3r99NwOK818EB9ZdEbVY3zOBOYJE-I8Q](https://user-images.githubusercontent.com/23405520/115138934-c64fa880-a04c-11eb-9768-be9d3bdc79ad.png)
 
@@ -92,8 +113,40 @@ A nice way to visualize a convolutional layer is shown below.
         How convolution works with K = 2 filters, each with a spatial extent F = 3, strides, S = 2 and input padding P = 1.
         
         
-### Classification
+### Classification - Fully Connected Layer (FC layer)
+
+![1_kToStLowjokojIQ7pY2ynQ](https://user-images.githubusercontent.com/23405520/115178617-52b2a780-a0ef-11eb-86f9-7abcd205a891.jpeg)
+
+Adding a Fully-Connected layer is a (usually) cheap way of learning non-linear combinations of the high-level features as represented by the output of the convolutional layer. The Fully-Connected layer is learning a possibly non-linear function in that space.
+
+Now that we have converted our input iamge into a suitable form for our Multi-Level Perceptron, we shall flatten the image into a column vector. The falttened output is fed to a feed-forward neural network and backpropagation applied to every iteration of training. Over a series of epochs, the model is able to distinguish between domination and certain low-level features in images and classify them using the <b> Softmax Classification </b> technique.
 
 After the convolution and pooling layers, our classification part consists of a few fully connected layers. However, these fully connected layers can only accept 1 Dimensional data. To convert our 3D data to 1D, we use the function <b> flatten </b> in Python. This essentially arranges our 3D volume into a 1D Vector.
 
 The last layers of a Convolution NN are fully connected layers. Neurons in a fully connected layer have full connections to all activations in the previous layer. This part is in principle the same as a regular Neural Network.
+
+There are various architectures of CNNs available which have been key in building algorithms which power and shall power AI as a whole in the foreseeable future. Some of them have been listed below:
+- LeNet
+- AlexNet
+- VGGNet
+- GoogLeNet
+- ResNet
+- ZFNet
+
+## Why ConvNets over Feed-Forward Neural Nets?
+
+![1_GLQjM9k0gZ14nYF0XmkRWQ](https://user-images.githubusercontent.com/23405520/115176634-1bda9280-a0eb-11eb-879c-be3eebafe886.png)
+
+An image in nothing but a matrix of pixel values, right ? So why not just flatten the image (3 * 3 Image matrix into a 9 * 1 vector) and feed it to a Multi-Level Perceptron for classification purposes? Uh.. not really.
+
+In cases of extremely basic binary images, the method might show an average precision score while performing prediction of classes but would have little to no accuracy when it comes to complex images having pixel dependencies throughout.
+
+A ConvNet is able to successfully capture the Spatial and Temporal dependencies in an image throught the application of relevant filters. The architecture performs a better fitting to the image dataset due to the reduction in the number of parameters involved and reusability of weights. In other words, the network can be trained to understand the sophistication of the image better.
+
+![1_15yDvGKV47a0nkf5qLKOOQ](https://user-images.githubusercontent.com/23405520/115176959-c357c500-a0eb-11eb-9115-c8a76e9e454b.png)
+
+In the figure, we have an RGB image which has been seperated by its three color planes - Red, Green and Blue. There are a number of such color spaces in which images exist - Grayscale, RGB, HSV, CMYK, etc.
+
+You can imagine how computationally intensive things would get once the images reach dimensions, say 8K (7680 * 4320). The role of the ConvNet is to reduce the images into a form which is easire to process without losing features which are critical for getting a good prediction. This is important when we are to design an architecture which is not only good at learning features but also is scalable to massive datasets.
+
+
