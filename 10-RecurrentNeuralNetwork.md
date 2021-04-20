@@ -188,6 +188,29 @@ Now the next BIG question that faces us is how does Back propagation work in cas
 
 ### Back propagation in a Recurrent Neural Network(BPTT)
 
+To imagine how weights would be updated in case of a recurrent neural network, might be a bit of a challenge. So to understand and visualize the back propagation, let's unroll the network at all the time steps. In an RNN we may or may not have outputs at each time step.
+
+In case of a forward propagation, the inputs enter and move forward at each time step. In case of a backward propagation in this case, we are figuratively going back in time to change the weights, hence we call it the Back propagation through time (BPTT).
+
+![bptt](https://user-images.githubusercontent.com/23405520/115380838-9b05be80-a1f0-11eb-8130-48f2b0adacd6.png)
+
+In case of an RNN, if `yt` is the predicted value `yt` is the actual value, the error is calculated as a cross entropy loss - 
+
+`Et(ȳt,yt) = – ȳt log(yt)`
+` E(ȳ,y) = – ∑ ȳt log(yt)`
+
+We typically treat the full sequence (word) as one training example, so the total error is just the sum of the errors at each time step (character). The weights as we can see are the same at each time step. Let's summarize the steps for backpropagation
+
+1. The cross entropy error is first computed using the current output and the actual output.
+2. Remember that the network is unrolled for all the time steps.
+3. For the unrolled network, the gradient is calculated for each time step with respect to the weigth parameter.
+4. Now that the weight is the same for all the time steps the gradient can be combined together for all time steps.
+5. The weights are then updated for both current neuron and the dense layers.
+
+
+The unrolled network looks much like a regular neural network. And the back propagation algorithm is similar to a regular neural network, just that we combine the gradients of the error for all time steps. Now what do you think might happen, if there are 100s of time steps. This would basically take really long for the network to converge since after unrolling the network becomes really huge.
+
+In case you do not wish to deep dive into the math of backpropagation, all you need to understand is that back propagation through time works similar as it does in a regular neural network once you unroll the recurrent neuron in your network. However, I shall be coming up with a detailed article on Recurrent Neural networks with scratch with would have the detailed mathematics of the backpropagation algorithm in a recurrent neural network.
 
 
 
