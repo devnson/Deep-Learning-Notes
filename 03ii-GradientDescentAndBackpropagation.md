@@ -1,3 +1,12 @@
+Back-propagation is just a method for calculating multi-variable derivatives of your model, whereas SGD is the method of locating the minimum of your loss/cost function.
+
+
+Stochastic gradient descent (SGD) is an optimization method used e.g. to minimize a loss function.
+
+In the SGD, you use 1 example, at each iteration, to update the weights of your model, depending on the error due to this example, instead of using the average of the errors of all examples (as in "simple" gradient descent), at each iteration. To do so, SGD needs to compute the "gradient of your model".
+
+Backpropagation is an efficient technique to compute this "gradient" that SGD uses.
+
 # Stochastic Gradient Descent
 
 Gradient Descent is an optimization algorithm that finds the set of input variables for a target function that results in minimum value of the target function, called the minimum of the function.
@@ -122,6 +131,11 @@ It would be fair to say that a neural network is trained or learns using Stochas
 That being said, a different algorithm can be used to optimize the parameter of a neural network, such as a genetic algorithm that does not require gradients. If the Stochastic Gradient Descent optimization algorithm is used, a different algorithm can be used to calculate the gradients for the loss function with respect to the model parameters, such as alternate algorithms that implement the chain rule.
 
 Nevertheless, the “Stochastic Gradient Descent with Back-propagation” combination is widely used because it is the most efficient and effective general approach sofar developed for fitting neural network models.
+
+
+
+
+
 
 
 Original:
