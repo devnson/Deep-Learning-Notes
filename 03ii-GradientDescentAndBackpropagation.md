@@ -7,6 +7,10 @@ In the SGD, you use 1 example, at each iteration, to update the weights of your 
 
 Backpropagation is an efficient technique to compute this "gradient" that SGD uses.
 
+
+https://www.linkedin.com/pulse/gradient-descent-backpropagation-ken-chen/
+
+
 # Stochastic Gradient Descent
 
 Gradient Descent is an optimization algorithm that finds the set of input variables for a target function that results in minimum value of the target function, called the minimum of the function.
