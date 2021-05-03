@@ -7,6 +7,8 @@ In the SGD, you use 1 example, at each iteration, to update the weights of your 
 
 Backpropagation is an efficient technique to compute this "gradient" that SGD uses.
 
+If I was asked to describe backpropagation algorithm in one sentence, it would be: propagating the total error backward through the connections in the network layer by layer, calculate the contribution (gradient) of each weight and bias to the total error in every layer, then use gradient descent algorithm to optimize the weights and biases, and eventually minimize the total error of the neural network
+
 
 https://www.linkedin.com/pulse/gradient-descent-backpropagation-ken-chen/
 
