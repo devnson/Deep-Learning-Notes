@@ -2,6 +2,10 @@
 
 In deep learning, we have the concept of loss, which tells us how poorly the model is performing at that current instant. Now we need to use this loss to train our network such that is performs better. Essentially what we need to do is to take the loss and try to minimize it, because a lower loss means our model is going to perform better. The process of minimizing (or maximizing) any mathematical expression is called <b> optimization. </b>
 
+
+![Screenshot (43)](https://user-images.githubusercontent.com/23405520/118385025-25441580-b62b-11eb-9833-0b1381d350ed.png)
+
+
 ![3eee0b_33163162ddd94900b7d9f5b049e9b7e3_mv2](https://user-images.githubusercontent.com/23405520/114669202-3f828f00-9d1f-11eb-8023-dd0ee0be83f2.gif)
 
 Optimizers are algorithms or methods used to change the attributes of the neural network such as <b> weights </b> and <b> learning rate </b> to reduce the losses. Optimizers are used to solve optimization problems by minimizing the function.
